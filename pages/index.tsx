@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 
 
 const Home = () => (
@@ -6,8 +7,6 @@ const Home = () => (
       <Head>
         <title>Books</title>
       </Head>
-
-      <h1>Hello world!</h1>
   </>
 
 )
