@@ -1,3 +1,5 @@
+import { type } from "os"
+
 export type AuthorsType = Array<{
     "name": string,
     "birth_year": number,
@@ -12,7 +14,7 @@ type FormatsType = {
     "image/jpeg": string,
     "text/html": string
 }
-export type BooksData = Array<{
+export type OneBookData = {
     "id": number,
     "title": string,
     "authors": AuthorsType,
@@ -24,11 +26,20 @@ export type BooksData = Array<{
     "media_type": string,
     "formats": FormatsType,
     "download_count": number
-}>
+}
+export type BooksData = Array<OneBookData>
 
 export type Data = {
     count: number,
     next: string,
     previous: null | string,
     results: BooksData
+}
+
+export type BookInfoType = {
+    id?: number,
+    image: string,
+    title: string,
+    author: AuthorsType,
+    down_count: number,
 }
