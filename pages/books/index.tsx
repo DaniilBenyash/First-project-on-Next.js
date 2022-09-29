@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Posts from "../../components/posts"
 import Header from "../../components/Header"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import {Data, BooksData} from '../../types'
 import  React from 'react';
 
@@ -24,13 +24,13 @@ const Books = () => {
         const scrollTop = ev.target.documentElement.scrollTop
         const innerHeight = window.innerHeight
 
-        if(scrollHeight - (scrollTop + innerHeight) < 200 && fetching === false && books !== []){
+        if(scrollHeight - (scrollTop + innerHeight) < 200 && fetching === false && books.length !== 0){
             fetchData(nextPage)
             setFetching(true) 
         }
     }
 
-    useEffect(() => {
+    useCallback(() => {
         document.addEventListener('scroll', scrollHander)
 
         return function() {
@@ -46,7 +46,7 @@ const Books = () => {
         setValueSearch(event.target.value)
     } 
 
-    useEffect(() => {
+    useCallback(() => {
         fetchData(`https://gutendex.com/books?search=${valueSearch}`)
     }, [valueSearch, fetchData])
 
