@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { BookInfoType } from '../types'
+import Image from 'next/image'
 
 const Card = ({image, title, author, down_count, id}: BookInfoType) => {
 
@@ -13,12 +14,12 @@ const Card = ({image, title, author, down_count, id}: BookInfoType) => {
             const parseStorage = JSON.parse(Storage)
             parseStorage.some((el: number) => el === id) && setView(true)
         }
-    }, [])
+    }, [id])
 
     return (
         <Link href={`/books/${id}`}>
             <div className={`w-full flex flex-col items-center cursor-pointer ${view && 'opacity-40'}`}>
-                <img className="h-96" src={image} alt={title} />
+                <Image className="h-96" src={image} alt={title} />
                 <h3 className="text-3xl font-bold text-center mt-6 mb-1">{title}</h3>
                 {author.map(({name}, id) => (
                     <p className="text-2xl" key={id}>{name}</p>

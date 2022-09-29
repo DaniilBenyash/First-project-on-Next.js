@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Posts from "../../components/Posts"
+import Posts from "../../components/posts"
 import Header from "../../components/Header"
 import { useState, useEffect } from "react"
 import {Data, BooksData} from '../../types'
@@ -36,7 +36,7 @@ const Books = () => {
         return function() {
             document.removeEventListener('scroll', scrollHander)
         }
-    }, [books, fetching])
+    }, [books, fetching, scrollHander])
 
     const SearchRef = React.createRef<HTMLInputElement>();
     const [valueSearch, setValueSearch] = useState('');
@@ -48,7 +48,7 @@ const Books = () => {
 
     useEffect(() => {
         fetchData(`https://gutendex.com/books?search=${valueSearch}`)
-    }, [valueSearch])
+    }, [valueSearch, fetchData])
 
     return(
         <>

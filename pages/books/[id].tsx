@@ -38,7 +38,7 @@ const Book = ({data}: any) => {
                 sessionStorage.setItem('viewd', JSON.stringify([id, ...parseStorage]))
             }
         }
-    }, [])
+    }, [id])
 
     return (
         <>
