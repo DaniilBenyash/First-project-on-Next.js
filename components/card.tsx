@@ -19,7 +19,7 @@ const Card = ({image, title, author, down_count, id}: BookInfoType) => {
     return (
         <Link href={`/books/${id}`}>
             <div className={`w-full flex flex-col items-center cursor-pointer ${view && 'opacity-40'}`}>
-                <Image className="h-96" src={image} alt={title} />
+                <Image height={380} width={240} src={image} alt={title}/>
                 <h3 className="text-3xl font-bold text-center mt-6 mb-1">{title}</h3>
                 {author.map(({name}, id) => (
                     <p className="text-2xl" key={id}>{name}</p>

@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Posts from "../../components/posts"
 import Header from "../../components/Header"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import {Data, BooksData} from '../../types'
 import  React from 'react';
 
@@ -30,13 +30,13 @@ const Books = () => {
         }
     }
 
-    useCallback(() => {
+    useEffect(() => {
         document.addEventListener('scroll', scrollHander)
 
         return function() {
             document.removeEventListener('scroll', scrollHander)
         }
-    }, [books, fetching, scrollHander])
+    }, [books, fetching])
 
     const SearchRef = React.createRef<HTMLInputElement>();
     const [valueSearch, setValueSearch] = useState('');
@@ -46,9 +46,9 @@ const Books = () => {
         setValueSearch(event.target.value)
     } 
 
-    useCallback(() => {
-        fetchData(`https://gutendex.com/books?search=${valueSearch}`)
-    }, [valueSearch, fetchData])
+    useEffect(() => {
+       fetchData(`https://gutendex.com/books?search=${valueSearch}`)
+    }, [valueSearch])
 
     return(
         <>
